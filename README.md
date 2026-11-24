@@ -1,9 +1,5 @@
 # Governed Semantic Query Engine
 
-[![CI Pipeline](https://github.com)](https://github.com)
-![Python 3.12](https://shields.io)
-![MariaDB 11.4](https://shields.io)
-![Code style: ruff](https://shields.io)
 
 A hands-on reference implementation of a **Governed Semantic Query Engine** demonstrating how to safely integrate Large Language Models (LLMs) with a relational Data Warehouse (**MariaDB**) using a **Semantic Layer**, **Layered Clean Architecture**, and **Deterministic Guardrails**.
 
