@@ -1,0 +1,35 @@
+database_dialect: "MariaDB 11.4"
+schema_name: "dwh_mart"
+
+tables:
+  fact_sales:
+    description: "Sales transactions fact table."
+    columns:
+      sale_id: "Unique transaction identifier"
+      sale_date: "Transaction date (YYYY-MM-DD)"
+      customer_key: "Foreign key referencing dim_customers"
+      product_key: "Foreign key referencing dim_products"
+      quantity: "Number of units sold"
+      gross_amount: "Gross revenue in EUR before discounts"
+      discount_amount: "Discount applied in EUR"
+      is_returned: "Flag: 1 = order cancelled/returned, 0 = completed order"
+
+  dim_customers:
+    description: "Customer dimension table."
+    columns:
+      customer_key: "Primary key"
+      customer_name: "Company name"
+      segment: "Customer segment (Enterprise, SMB)"
+      country: "Country (Latvia, Lithuania, Estonia)"
+
+  dim_products:
+    description: "Product and service catalog dimension."
+    columns:
+      product_key: "Primary key"
+      product_name: "Product or service name"
+      category: "Product category (Software, Consulting)"
+
+business_rules:
+  - "Net Revenue must ALWAYS be calculated as: SUM(gross_amount - discount_amount)."
+  - "Any revenue, sales volume, or order count calculation MUST strictly filter completed orders: WHERE is_returned = 0."
+  - "Generate only SELECT or WITH (CTE) read-only queries."
