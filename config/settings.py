@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     db_password: str
     query_timeout_seconds: int = 10
     semantic_layer_path: str = "config/semantic_layer.yaml"
-    llm_model: str = "gemini-2.5-flash"
+    llm_model: str = "gemini-3.5-flash-lite"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 

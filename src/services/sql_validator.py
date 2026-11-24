@@ -26,7 +26,8 @@ class SQLValidatorService:
 
         if not isinstance(statement, exp.Select):
             raise SQLSecurityError(
-                f"Security violation: Only SELECT queries are permitted, got {type(statement).__name__}."
+                "Security violation: Only SELECT queries are permitted, "
+                f"got {type(statement).__name__}."
             )
 
         if statement.args.get("limit") is None:
